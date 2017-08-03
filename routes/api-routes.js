@@ -17,7 +17,7 @@ module.exports = function(app) {
       burgers: data
     };
     res.render('index', hbsObject);
-    console.log(hbsObject);
+    // console.log(hbsObject);
     });
   });
 
@@ -51,7 +51,6 @@ module.exports = function(app) {
 
   // PUT route for updating todos. We can get the updated todo data from req.body
   app.post("/update/:id", function(req, res) {
-    console.log("im here");
     // Update takes in an object describing the properties we want to update, and
     // we use where to describe which objects we want to update
     db.burgers.update({

@@ -9,7 +9,7 @@ var config    = require(__dirname + '/../config/config.json')[env];
 var db        = {};
 
 if(process.env.JAWSDB_URL){
-  var sequelize = new Sequelize(process.env.JAWSDB_URL);
+  var sequelize = new Sequelize("mysql://eh6374jcrrjx4yba:o80evp3d9fm46s6a@op2hpcwcbxb1t4z9.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/r6aoeg1adgcpomb");
 } 
 else if (config.use_env_variable) {
   var sequelize = new Sequelize(process.env[config.use_env_variable]);
@@ -37,3 +37,4 @@ db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
 module.exports = db;
+
