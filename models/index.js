@@ -4,18 +4,18 @@ var fs        = require('fs');
 var path      = require('path');
 var Sequelize = require('sequelize');
 var basename  = path.basename(module.filename);
-var env       = process.env.JAWSDB_URL || process.env.NODE_ENV || 'development';
+var env       = process.env.JAWSDB_URL || 'development';
 var config    = require(__dirname + '/../config/config.json')[env];
 var db        = {};
 
-if(process.env.JAWSDB_URL){
-  var sequelize = new Sequelize("mysql://eh6374jcrrjx4yba:o80evp3d9fm46s6a@op2hpcwcbxb1t4z9.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/r6aoeg1adgcpomb");
-} 
-else if (config.use_env_variable) {
-  var sequelize = new Sequelize(process.env[config.use_env_variable]);
-} else {
-  var sequelize = new Sequelize(config.database, config.username, config.password, config);
-}
+// if(process.env.JAWSDB_URL){
+  var sequelize = new Sequelize(process.env.JAWSDB_URL);
+// } 
+// else if (config.use_env_variable) {
+//   var sequelize = new Sequelize(process.env[config.use_env_variable]);
+// } else {
+//   var sequelize = new Sequelize(config.database, config.username, config.password, config);
+// }
 
 fs
   .readdirSync(__dirname)
@@ -37,4 +37,3 @@ db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
 module.exports = db;
-
