@@ -1,0 +1,62 @@
+<img src="/assets/img/burger.jpg">
+
+<h1>Eat-Da-Burger!</h1>
+<br/>
+<div class="container-fluid">
+
+<div class="row">
+    
+    <div class="col-md-3 col-md-offset-2">
+        <div class="card">
+            <ul class="list-group list-group-flush">
+                {{#each burgers}}
+                    {{#unless this.devoured}}
+                        <li class="list-group-item">{{this.id}}. {{this.burger_name}}</li>
+                    {{/unless}}
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-2">
+        {{#each burgers}}
+            {{#unless this.devoured}}
+                <div class="devourBtn">
+                    <form action="/update/{{this.id}}" method="POST">
+                    <input type="hidden" name="devoured" value="true">
+                    <button type="submit" class="btn btn-warning">Devour it!</button>
+                    </form>
+                </div>
+                
+            {{/unless}}
+        {{/each}}
+    </div>
+    <div class="col-md-3 ">
+        <div class="card">
+            <ul class="list-group list-group-flush">
+                {{#each burgers}}
+                    {{#if this.devoured}}
+                        <li class="list-group-item"><div class="devoured">{{this.id}}. {{this.burger_name}}</div></li>
+
+                        {{!--<form action="/{{this.id}}?_method=PUT" method="POST">
+                        <input type="hidden" name="devoured" value="false">
+                        <button type="submit">Throw up!</button>
+                        </form>--}}
+
+                    {{/if}}
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+    <form class="create-update-form" action="/" method="POST">
+
+    <div class="form-group">
+        <textarea id="ca" name="name" id="exampleTextarea" rows="3" style="width:30%"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <h6>Enter a burger you want to eat</h6>
+</div>
+</form>
